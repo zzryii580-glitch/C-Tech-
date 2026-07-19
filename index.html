@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-TECH | Jasa Desain Profesional</title>
+    <!-- Font Google & FontAwesome untuk Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #06040a;
+            --bg-card: #0d0914;
+            --purple-neon: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.6);
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(6, 4, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--purple-neon);
+            text-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--purple-neon);
+            text-shadow: 0 0 8px var(--purple-glow);
+        }
+
+        .btn-nav {
+            background: transparent;
+            border: 2px solid var(--purple-neon);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+        }
+
+        .btn-nav:hover {
+            background: var(--purple-neon);
+            box-shadow: 0 0 20px var(--purple-glow);
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            position: relative;
+            background: radial-gradient(circle at 80% 50%, rgba(88, 28, 135, 0.25) 0%, rgba(6, 4, 10, 1) 70%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 55%;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            color: var(--purple-neon);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #fff, var(--purple-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: var(--purple-neon);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 0 20px var(--purple-glow);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--purple-neon);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--purple-neon);
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        /* Hero Image/Karakter Animasi */
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1974&auto=format&fit=crop') no-repeat bottom center;
+            background-size: cover;
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+            z-index: 1;
+        }
+
+        /* --- LAYANAN / SERVICES --- */
+        .services {
+            padding: 100px 8%;
+            background: #09060f;
+            display: flex;
+            gap: 50px;
+        }
+
+        .services-left {
+            flex: 2;
+        }
+
+        .services-right {
+            flex: 1;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+
+        .section-tag {
+            color: var(--purple-neon);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--purple-neon);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.1);
+        }
+
+        .service-icon {
+            font-size: 28px;
+            color: var(--purple-neon);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .service-link {
+            color: var(--purple-neon);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Kenapa Memilih Kami (Kanan) */
+        .why-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .why-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple-neon);
+            flex-shrink: 0;
+        }
+
+        .why-text h4 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .why-text p {
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* --- PORTFOLIO (GAMBAR & VIDEO) --- */
+        .portfolio {
+            padding: 100px 8%;
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--purple-neon);
+            box-shadow: 0 0 15px var(--purple-glow);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: 0.5s;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            background: #000;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* --- TENTANG KAMI & STATISTIK --- */
+        .about {
+            padding: 80px 8%;
+            background: #09060f;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .about-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .stats-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .stat-card h2 {
+            font-size: 42px;
+            color: var(--purple-neon);
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-dark);
+            padding: 40px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--purple-neon);
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 968px) {
+            nav { padding: 15px 5%; }
+            .nav-links { display: none; }
+            .hero { flex-direction: column; padding: 120px 5% 50px 5%; text-align: center; }
+            .hero-content { max-width: 100%; }
+            .hero-title { font-size: 38px; }
+            .hero-btns { justify-content: center; }
+            .hero-image { display: none; }
+            .services { flex-direction: column; padding: 60px 5%; }
+            .grid-services { grid-template-columns: 1fr; }
+            .portfolio { padding: 60px 5%; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .about-box { flex-direction: column; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">C-<span>TECH</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+        </ul>
+        <!-- WhatsApp Terintegrasi langsung -->
+        <a href="https://wa.me/6283189483134?text=Halo%20C-TECH,%20saya%20tertarik%20dengan%20layanan%20desainnya!" target="_blank" class="btn-nav">HUBUNGI KAMI <i class="fa-solid fa-paper-plane"></i></a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tag">JASA DESAIN PROFESIONAL</span>
+            <h1 class="hero-title">DESAIN BERKUALITAS, HASIL <span>LUAR BIASA.</span></h1>
+            <p class="hero-desc">C-TECH hadir untuk mewujudkan ide kreatif menjadi desain yang memukau dan berkelas. Kepuasan Anda adalah prioritas kami.</p>
+            <div class="hero-btns">
+                <a href="#portfolio" class="btn-primary">LIHAT PORTFOLIO <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/6283189483134" target="_blank" class="btn-secondary">HUBUNGI KAMI <i class="fa-solid fa-paper-plane"></i></a>
+            </div>
+        </div>
+        <!-- Gambar Karakter Anime Terganti Otomatis via URL Unsplash -->
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- LAYANAN SECTION -->
+    <section class="services" id="layanan">
+        <div class="services-left">
+            <span class="section-tag">LAYANAN KAMI</span>
+            <h2 class="section-title">SOLUSI DESAIN UNTUK<br>SEMUA KEBUTUHAN ANDA</h2>
+            
+            <div class="grid-services">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>BRANDING DESIGN</h3>
+                    <p>Desain logo, identitas brand, dan panduan brand yang profesional.</p>
+                    <a href="https://wa.me/6283189483134" class="service-link">SELENGKAPNYA →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-image"></i></div>
+                    <h3>POSTER DESIGN</h3>
+                    <p>Desain poster event, promosi, dan kebutuhan visual lainnya yang menarik.</p>
+                    <a href="https://wa.me/6283189483134" class="service-link">SELENGKAPNYA →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <h3>SOCIAL MEDIA DESIGN</h3>
+                    <p>Konten visual untuk media sosial yang estetis dan berdampak.</p>
+                    <a href="https://wa.me/6283189483134" class="service-link">SELENGKAPNYA →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-box"></i></div>
+                    <h3>UI/UX DESIGN</h3>
+                    <p>Desain antarmuka web atau aplikasi yang modern dan user-friendly.</p>
+                    <a href="https://wa.me/6283189483134" class="service-link">SELENGKAPNYA →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-right">
+            <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 30px;">KENAPA MEMILIH<br>C-TECH?</h3>
+            
+            <div class="why-item">
+                <div class="why-icon"><i class="fa-solid fa-crown"></i></div>
+                <div class="why-text">
+                    <h4>DESAIN EKSKLUSIF</h4>
+                    <p>Setiap desain dibuat unik dan berfokus pada kebutuhan Anda.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><i class="fa-solid fa-star"></i></div>
+                <div class="why-text">
+                    <h4>KUALITAS TERBAIK</h4>
+                    <p>Kami mengutamakan kualitas dan detail dalam setiap karya.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="why-text">
+                    <h4>PROSES CEPAT</h4>
+                    <p>Pengerjaan cepat tanpa mengurangi kualitas hasil.</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                <div class="why-text">
+                    <h4>HARGA BERSAING</h4>
+                    <p>Harga terbaik untuk hasil desain kelas premium.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION (TEMPAT GAMBAR & VIDEO KAMU) -->
+    <section class="portfolio" id="portfolio">
+        <span class="section-tag">PORTFOLIO SAYA</span>
+        <h2 class="section-title">KARYA & SHOWREEL TERBARU</h2>
+        
+        <div class="portfolio-tabs">
+            <button class="tab-btn active">Semua Karya</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- TEMPAT FOTO 1 -->
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop" alt="Foto Karya 1">
+                <div class="portfolio-info">
+                    <h3>Artwork Fantasi Ungu</h3>
+                    <p>Desain Ilustrasi Digital</p>
+                </div>
+            </div>
+
+            <!-- TEMPAT FOTO 2 -->
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1935&auto=format&fit=crop" alt="Foto Karya 2">
+                <div class="portfolio-info">
+                    <h3>3D Neon Abstract</h3>
+                    <p>Branding Visual</p>
+                </div>
+            </div>
+
+            <!-- TEMPAT VIDEO SHOWREEL (Menggunakan Youtube Embed) -->
+            <div class="portfolio-item">
+                <div class="video-container">
+                    <!-- GANTI LINK DI BAWAH DENGAN ID VIDEO YOUTUBE KAMU -->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Video Showreel C-TECH</h3>
+                    <p>Video Portofolio Animasi & Editing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI & STATISTIK -->
+    <section class="about" id="tentang">
+        <div class="about-box">
+            <div class="about-text">
+                <span class="section-tag">TENTANG C-TECH</span>
+                <h2 class="section-title" style="font-size: 30px; margin-bottom: 20px;">KREATIVITAS TANPA BATAS,<br>INOVASI TANPA HENTI.<
